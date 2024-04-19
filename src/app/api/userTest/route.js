@@ -8,6 +8,7 @@ export async function GET() {
         const users = await prisma.user.findMany();
 
         return NextResponse.json({ code: 200, message: "Users found", data: users })
+        // wtf
         
     } catch (error) {
         console.log(error);
