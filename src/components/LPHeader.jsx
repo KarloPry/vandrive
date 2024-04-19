@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@relume_io/relume-ui";
+import Vanlejandro from "./Vanlejandro";
 
 const Header1Defaults = {
   heading: "Medium length hero heading goes here",
@@ -21,6 +22,7 @@ export const LPHeader = (props) => {
   return (
     <header className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
+      <Vanlejandro/>
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           <div>
             <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl">{heading}</h1>
