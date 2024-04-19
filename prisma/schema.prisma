@@ -32,16 +32,18 @@ enum Plan {
 }
 
 model Account {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
-  email     String  @unique
+  email     String   @unique
   password  String
-  isOwner   Boolean @default(false)
+  isOwner   Boolean  @default(false)
   latitud   Float
   longitud  Float
-  empresaId String  @db.ObjectId
+  empresaId String   @db.ObjectId
+  viajesid  String[] @db.ObjectId
 
   Empresa Empresa @relation(fields: [empresaId], references: [id])
+  Viaje   Viaje[] @relation(fields: [viajesid], references: [id])
 }
 
 // TODO: checar credenciales con AUTH0, verificar como se entrega eso
@@ -49,13 +51,16 @@ model Account {
 model Viaje {
   id                String            @id @default(auto()) @map("_id") @db.ObjectId
   fechaInicio       DateTime          @default(now())
-  fechaFin          DateTime
+  fechaFin          DateTime?
   unidadId          String            @db.ObjectId
   choferid          String            @db.ObjectId
   puntosIntermedios PuntoIntermedio[]
+  distancia         Float?
+  pasajerosId       String[]          @db.ObjectId
 
-  unidad Unidad @relation(fields: [unidadId], references: [id])
-  chofer Chofer @relation(fields: [choferid], references: [id])
+  Pasajeros Account[] @relation(fields: [pasajerosId], references: [id])
+  unidad    Unidad    @relation(fields: [unidadId], references: [id])
+  chofer    Chofer    @relation(fields: [choferid], references: [id])
 }
 
 type PuntoIntermedio {
