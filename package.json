@@ -10,6 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
     "@nextui-org/react": "^2.3.5",
     "@relume_io/relume-tailwind": "^0.0.10",
     "@relume_io/relume-ui": "^0.0.19",
@@ -28,6 +29,7 @@
     "uploadthing": "^6.9.0"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
     "postcss": "^8",
