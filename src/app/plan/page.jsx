@@ -12,33 +12,33 @@ const cardsData = [
   {
     id: 1,
     level: "On Demand",
-    price: "Per trip",
-    km: "100 km per day",
-    road: "Round trip",
-    trip: "1 destination per trip",
-    },
-    {
+    price: "Por viaje",
+    km: "100 km/día",
+    road: "Viaje redondo",
+    trip: "1 destino por viaje",
+  },
+  {
     id: 2,
     level: "Gold",
-    price: "$7.99",
-    km: "200 km per day",
-    road: "Round trip",
-    trip: "2 destinations per trip",
-    },
-    {
+    price: "$999",
+    km: "200 km/día",
+    road: "Viaje redondo",
+    trip: "2 destinos por viaje",
+  },
+  {
     id: 3,
     level: "Platinum",
-    price: "$8.99",
-    km: "400 km per day",
-    road: "Round trip",
-    trip: "4 destinations per trip",
-    }
+    price: "$1,999",
+    km: "400 km/día",
+    road: "Viaje redondo",
+    trip: "4 destinos por viaje",
+  }
 ];
 
 const payData = [
   {
-    date: 'The plan will renew on January 24th, 2025',
-    refund: 'Non-refundable',    
+    date: 'El plan se renovará el 24 de Abril de 2024',
+    refund: 'No reembolsable',
   }
 ]
 
@@ -65,7 +65,7 @@ export default function Page() {
             alt="Picture of the author"
             className="rounded-full"
           />
-          <h2 className="text-3xl">Get the service</h2>
+          <h2 className="text-3xl">Adquiere el servicio</h2>
           <div className="flex flex-row gap-4">
             <Checkbox
               defaultSelected={selectedCheckbox === 0}
@@ -73,7 +73,7 @@ export default function Page() {
               className="text-white"
               onClick={() => handleCheckboxClick(0)}
             >
-              Monthly
+              Mensual
             </Checkbox>
             <Checkbox
               defaultSelected={selectedCheckbox === 1}
@@ -81,7 +81,7 @@ export default function Page() {
               className="text-white"
               onClick={() => handleCheckboxClick(1)}
             >
-              Yearly
+              Anual
             </Checkbox>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function Page() {
         </div>
         <div className="flex flex-col w-3/4">
           <div className="flex flex-col gap-4 w-full items-center py-4">
-            <h1 className="text-4xl">Company Information</h1>
+            <h1 className="text-4xl">Información de la compañía</h1>
             <Input
               isRequired
               type="name"
@@ -117,7 +117,7 @@ export default function Page() {
             />
           </div>
           <div className="flex flex-col justify-start gap-8 w-full">
-            <h1 className="text-4xl">Payment Methods</h1>
+            <h1 className="text-4xl">Métodos de pago</h1>
             <Image
               src={Pagos}
               width={300}

@@ -2,7 +2,7 @@
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from '@nextui-org/react'
 
 const columns = [
-  { name: "NAME", uid: "name" },
+  { name: "NOMBRE", uid: "name" },
   { name: "CHECK IN", uid: "checkin" },
   { name: "CHECK OUT", uid: "checkout" }
 ]

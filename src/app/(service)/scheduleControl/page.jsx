@@ -12,9 +12,9 @@ import { Button } from "@nextui-org/react";
 import { LineGraph } from "@/components/LineGraph";
 
 const columns = [
-  { name: "NAME", uid: "name" },
-  { name: "START TIME", uid: "startTime" },
-  { name: "ARRIVE TIME", uid: "arriveTime" }
+  { name: "NOMBRE", uid: "name" },
+  { name: "TIEMPO DE INICIO", uid: "startTime" },
+  { name: "TIEMPO DE LLEGADA", uid: "arriveTime" }
 ];
 
 const employeesList = [
@@ -140,7 +140,7 @@ export default function Page() {
               "24 Oct",
               "30 Nov",
             ]}
-            chartTitle={"Km/Trip"}
+            chartTitle={"Km/Viaje"}
             color={"#E26969"}
             bgColor={"#BB3535"}
           />
@@ -156,7 +156,7 @@ export default function Page() {
               "24 Oct",
               "30 Nov",
             ]}
-            chartTitle={"Passengers/Trip"}
+            chartTitle={"Pasajeros/Viaje"}
             color={"#416C95"}
             bgColor={"#16436D"}
           />
