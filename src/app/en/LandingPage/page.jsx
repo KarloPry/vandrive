@@ -11,15 +11,7 @@ import { LPTestimonial } from '@/components/LPTestimonial'
 import Vanlejandro from '@/components/DHeader'
 import React from 'react'
 import DCardPricingEN from "@/components/DCardPricingEN";
-
-const Footer7Defaults = {
-  footerText: "© 2024 315-150. All rights reserved.",
-  footerLinks: [
-    { title: "Privacy Policy", url: "#" },
-    { title: "Terms of Service", url: "#" },
-    { title: "Cookies Settings", url: "#" },
-  ],
-};
+import { LPHeader } from "@/components/LPHeader";
 
 const page = () => {
   return (
@@ -48,6 +40,11 @@ const page = () => {
           ]}
         />
         <Vanlejandro/>
+        <LPHeader
+          heading = {"Who we are?"}
+          description =
+            {"We offer a service that allows companies with remote workers to reduce commuting times and enhance security. Our solution includes an employee registration and management system, as well as security measures for sensitive documents or possibly for specific access in a data center."}
+        />
         <LPLogo
           heading = {"Official Sponsors"}
         />
