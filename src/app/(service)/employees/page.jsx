@@ -98,12 +98,24 @@ const trips = [
   }
 ];
 
+
+
+
 export default function Page() {
   // const [trips, setTrips] = useState();
   const router = useRouter();
+
+  const [tripsData, setTripsData] = useState([]);
+
+  const getData = async() => {
+    const empresaId = localStorage.getItem("empresaId")
+
+    const response = await fetch('/api/viajes' + empresaId)
+    console.log(await response.json());
+  }
+
   useEffect(() => {
-    //
-    // setTrips(respuesta de la API)
+    
   }, [])
 
   const [filteredTrips, setFilteredTrips] = useState(trips);
