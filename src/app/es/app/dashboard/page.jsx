@@ -101,7 +101,7 @@ export default function Page() {
       <div className="bg-white p-4 rounded-xl">
       <div className="flex flex-row justify-between mb-4">
           <div className="flex gap-2 items-center">
-            <h2 className="text-2xl inline-block">Trip record</h2>
+            <h2 className="text-2xl inline-block">Historial de Viaje</h2>
             <span className="material-symbols-rounded inline-block">
               history
             </span>
@@ -121,7 +121,7 @@ export default function Page() {
           <TableHeader columns={columns}>
             {
               (column) => (
-                <TableColumn key={column.uid} align="center" className="bg-red-100">
+                <TableColumn key={column.uid} align="center" className="bg-[#f2b882] text-blue-950">
                   {column.name}
                 </TableColumn>
               )
