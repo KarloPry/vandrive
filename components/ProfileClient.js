@@ -22,12 +22,11 @@ export default function ProfileClient() {
         },
       });
 
-      console.log(res)
-
       const resBody = await res.json();
 
       if (resBody.code === 200) {
         // TODO: user exists, send to dashboard
+        // store entreprice id in localstorage
       }
 
       if (resBody.code === 201) {
