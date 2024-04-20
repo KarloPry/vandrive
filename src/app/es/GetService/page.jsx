@@ -42,7 +42,7 @@ const payData = [
   }
 ]
 
-export default function page() {
+export default function Page() {
   const [activeCard, setActiveCard] = useState(1);
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
   const activeCardData = cardsData.find((card) => card.id === activeCard);
