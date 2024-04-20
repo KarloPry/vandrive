@@ -6,10 +6,10 @@ import { Input, Button, Checkbox, Link } from "@nextui-org/react";
 import Logo from "../../../../public/Logo.svg";
 import { useState } from "react";
 
+
+
 export default function Page()  {
   const [rememberData, setRememberData] = useState(false);
-
-  const [first, setfirst] = useState(second)
 
   const handleRememberData = () => {
     setRememberData(!rememberData);
