@@ -17,7 +17,9 @@ const page = () => {
         <LPNavBar/>
         <Vanlejandro/>
         <LPLogo/>
-        <h1 className='text-center font-bold text-6xl text-blue-950'>Planes de Precios</h1>
+        <div className="mx-auto mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
+          <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-blue-950">Planes de Precios</h1>
+        </div>
         <DCardPricing/>
         <LPTestimonial/>
         <LPContactUS/>

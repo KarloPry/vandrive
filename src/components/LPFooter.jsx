@@ -11,7 +11,7 @@ const Footer7Defaults = {
       ],
     },
   ],
-  footerText: "© 2024 Relume. All rights reserved.",
+  footerText: "© 2024 315-150. All rights reserved.",
   footerLinks: [
     { title: "Privacy Policy", url: "#" },
     { title: "Terms of Service", url: "#" },

@@ -36,7 +36,7 @@ export default function LPNavBar  (props)  {
     ...props,
   };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const genericHamburgerLine = `h-0.5 w-6 my-[3px] bg-black transition ease-in-out transform duration-300 lg:hidden`;
+  const genericHamburgerLine = `h-0.5 w-6 my-[3px] bg-white transition ease-in-out transform duration-300 lg:hidden`;
 
   const handleLoginButtonClick = () => {
     console.log("Login");
@@ -47,7 +47,7 @@ export default function LPNavBar  (props)  {
   };
 
   return (
-    <nav className="flex h-auto min-h-16 w-full items-center border-b border-black bg-white px-[5%] lg:min-h-18 fixed top-0">
+    <nav className="flex h-auto min-h-16 w-full items-center bg-black px-[5%] lg:min-h-18 fixed top-0">
       <div className="mx-auto flex size-full auto-cols-fr items-center justify-between gap-4 lg:grid lg:grid-cols-[0.375fr_1fr_0.375fr]">
         <div className="flex min-h-16 flex-shrink-0 items-center">
           <Image
@@ -59,7 +59,7 @@ export default function LPNavBar  (props)  {
         </div>
         <ul
           className={clsx(
-            "absolute left-0 top-16 flex h-dvh w-full flex-col items-center justify-start border-b border-border-primary bg-white px-[5%] pt-4 lg:static lg:flex lg:h-auto lg:w-auto lg:flex-row lg:justify-center lg:border-none lg:px-0 lg:pt-0 text-black",
+            "absolute left-0 top-16 flex h-dvh w-full flex-col items-center justify-start border-b border-border-primary bg-black px-[5%] pt-4 lg:static lg:flex lg:h-auto lg:w-auto lg:flex-row lg:justify-center lg:border-none lg:px-0 lg:pt-0 text-white",
             mobileMenuOpen ? "block" : "hidden",
           )}
         >
@@ -71,6 +71,7 @@ export default function LPNavBar  (props)  {
                 <a
                   href={link.url}
                   className="relative block py-3 text-center text-md ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-primary focus-visible:ring-offset-2 lg:px-4 lg:py-2 lg:text-base"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                   {link.title}
                 </a>
@@ -85,7 +86,7 @@ export default function LPNavBar  (props)  {
               key={`${button.title}-${index}`}
               variant={button.variant}
               size={button.size}
-              className="px-4 py-1 md:px-6 md:py-2 text-black hover:bg-orange-300 rounded-lg"
+              className="px-4 py-1 md:px-6 md:py-2 text-white hover:bg-orange-300 hover:text-black rounded-lg"
               onClick={button.title === "Ingresar" ? handleLoginButtonClick : handleRegisterButtonClick}
             >
                 {button.title}
