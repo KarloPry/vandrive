@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Image from "next/image";
 import { Input, Button, Checkbox, Link } from "@nextui-org/react";
 import Logo from "../../../../public/Logo.svg";
+import { useState } from "react";
 
-const page = () => {
+export default function Page()  {
   const [rememberData, setRememberData] = useState(false);
+
+  const [first, setfirst] = useState(second)
 
   const handleRememberData = () => {
     setRememberData(!rememberData);
@@ -75,4 +78,4 @@ const page = () => {
   );
 };
 
-export default page;
+// export default page;
