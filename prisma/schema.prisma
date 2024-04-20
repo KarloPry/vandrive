@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Models
+
+model User {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  age  Int
+}
+
+model Empresa {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  nombre   String @unique
+  plan     Plan   @default(On_demand)
+  latitud  Float
+  longitud Float
+
+  accounts  Account[]
+  viajes    Viaje[]
+  empleados Empleado[]
+}
+
+enum Plan {
+  On_demand
+  Gold
+  Enterprise
+}
+
+model Account {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String  @unique
+  empresaId String? @db.ObjectId
+
+  Empresa Empresa? @relation(fields: [empresaId], references: [id])
+}
+
+// TODO: checar credenciales con AUTH0, verificar como se entrega eso
+
+model Viaje {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  fechaInicio       DateTime  @default(now())
+  fechaFin          DateTime?
+  unidadId          String    @db.ObjectId
+  choferId          String    @db.ObjectId
+  puntoInicio       Punto
+  puntoFinal        Punto
+  puntosIntermedios Punto[]
+  distancia         Float?    @default(0)
+  empresaId         String    @db.ObjectId
+  empleadosId       String[]  @db.ObjectId
+
+  unidad    Unidad     @relation(fields: [unidadId], references: [id])
+  chofer    Chofer     @relation(fields: [choferId], references: [id])
+  empresa   Empresa    @relation(fields: [empresaId], references: [id])
+  Empleados Empleado[] @relation(fields: [empleadosId], references: [id])
+}
+
+type Punto {
+  orden     Int?
+  longitud  Float?
+  latitud   Float?
+  direccion String?
+}
+
+model Unidad {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  tipoUnidad TipoUnidad @default(van)
+
+  viajes Viaje[]
+}
+
+enum TipoUnidad {
+  van
+  camion
+}
+
+model Empleado {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  longitud  Float
+  latitud   Float
+  viajesId  String[] @db.ObjectId
+  empresaId String   @db.ObjectId
+
+  Viajes  Viaje[] @relation(fields: [viajesId], references: [id])
+  Empresa Empresa @relation(fields: [empresaId], references: [id])
+}
+
+model Chofer {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  edad Int
+
+  viajes Viaje[]
+}

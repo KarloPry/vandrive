@@ -1,3 +1,4 @@
+import { light } from "@mui/material/styles/createPalette";
 import {nextui} from "@nextui-org/react";
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -14,10 +15,27 @@ const config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      animation: {
+        'loop-scroll': 'loop-scroll 10s linear infinite',
+      },
+      keyframes: {
+        'loop-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        }
+      },
     },
   },
   darkMode: "class",
-  plugins: [nextui()]
+  plugins: [nextui({
+    themes: {
+      light: {
+        colors: {
+          primary: '#1C385F'
+        }
+      }
+    }
+  })]
 };
 
 export default config
