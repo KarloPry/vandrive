@@ -49,24 +49,27 @@ model Account {
 // TODO: checar credenciales con AUTH0, verificar como se entrega eso
 
 model Viaje {
-  id                String            @id @default(auto()) @map("_id") @db.ObjectId
-  fechaInicio       DateTime          @default(now())
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  fechaInicio       DateTime  @default(now())
   fechaFin          DateTime?
-  unidadId          String            @db.ObjectId
-  choferid          String            @db.ObjectId
-  puntosIntermedios PuntoIntermedio[]
+  unidadId          String    @db.ObjectId
+  choferid          String    @db.ObjectId
+  puntoInicio       Punto
+  PuntoFinal        Punto
+  puntosIntermedios Punto[]
   distancia         Float?
-  pasajerosId       String[]          @db.ObjectId
+  pasajerosId       String[]  @db.ObjectId
 
   Pasajeros Account[] @relation(fields: [pasajerosId], references: [id])
   unidad    Unidad    @relation(fields: [unidadId], references: [id])
   chofer    Chofer    @relation(fields: [choferid], references: [id])
 }
 
-type PuntoIntermedio {
-  orden    Int
-  longitud Float
-  latitud  Float
+type Punto {
+  orden     Int?
+  longitud  Float?
+  latitud   Float?
+  direccion String?
 }
 
 model Unidad {

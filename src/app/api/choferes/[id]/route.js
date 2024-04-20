@@ -7,17 +7,17 @@ export async function GET( request, { params } ) {
 
         const id = params.id;
         
-        const empresa = await prisma.empresa.findMany({
+        const chofer = await prisma.chofer.findMany({
             where: {
                 id: id,
             }
         })
 
-        if (!empresa) {
+        if (!chofer) {
             return NextResponse.json({ code: 400, message: "Item not found"})
         }
 
-        return NextResponse.json({ code: 200, message: "Everything OK", data: empresa[0] })
+        return NextResponse.json({ code: 200, message: "Everything OK", data: chofer[0] })
         
     } catch (error) {
         console.log(error);
