@@ -1,3 +1,4 @@
+import { light } from "@mui/material/styles/createPalette";
 import {nextui} from "@nextui-org/react";
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -17,7 +18,15 @@ const config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()]
+  plugins: [nextui({
+    themes: {
+      light: {
+        colors: {
+          primary: '#1C385F'
+        }
+      }
+    }
+  })]
 };
 
 export default config
