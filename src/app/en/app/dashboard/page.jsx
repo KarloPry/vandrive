@@ -3,6 +3,7 @@ import { Avatar, Button } from "@nextui-org/react";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react'
 import { LineGraph } from "@/components/LineGraph";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const columns = [
   { name: "START ADDRESS", uid: "startAdrress" },
@@ -60,7 +61,7 @@ const trips = [
 
 export default function Page() {
   // const [trips, setTrips] = useState();
-
+  const router = useRouter();
   useEffect(() => {
     //
     // setTrips(respuesta de la API)
@@ -97,9 +98,16 @@ export default function Page() {
 
   return (
     <div className="flex flex-col flex-1 p-4 bg-[#F2F2F2] gap-4 overflow-y-auto overflow-x-hidden">
-      <div className="flex w-full gap-2 items-center justify-end">
-        <Avatar showFallback src='https://images.unsplash.com/broken' />
-        <p>Diego Martínez García</p>
+      <div className="w-full flex items-center justify-end gap-4">
+        <Button
+          onPress={() => router.push("/en/app/map")}
+          color="primary"
+          startContent={<span className="material-symbols-rounded !text-white">add</span>}
+        >Add trip</Button>
+        <div className="flex gap-2 items-center justify-end">
+          <Avatar showFallback src='https://images.unsplash.com/broken' />
+          <p>Diego Martínez García</p>
+        </div>
       </div>
       <div className="bg-white p-4 rounded-xl">
         <div className="flex gap-2 items-center">
