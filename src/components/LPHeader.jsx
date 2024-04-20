@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@relume_io/relume-ui";
-import Vanlejandro from "./Vanlejandro";
+import Vanlejandro from "./DHeader";
 
 const Header1Defaults = {
   heading: "Medium length hero heading goes here",
