@@ -10,33 +10,45 @@ export default function ProfileClient() {
 
   const DefineUser = async (email, user) => {
     try {
+
+      console.log(email);
+      console.log(user)
       
       const res = await fetch(`/api/accounts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: {
+        body: JSON.stringify({
           email: email,
-          user: user,
-        },
+          name: user,
+        }),
       });
 
       const resBody = await res.json();
 
+      console.log(resBody);
+
       if (resBody.code === 200) {
-        // TODO: user exists, send to dashboard
-        // store entreprice id in localstorage
-        localStorage.setItem("empresaId", resBody.empresaId)
+        localStorage.setItem("empresaId", resBody.data.empresaId)
+        localStorage.setItem("email", resBody.data.email)
+        localStorage.setItem("name", resBody.data.name)
         router.push("/en/app/dashboard")
       }
 
       if (resBody.code === 201) {
         // TODO: user exists but has no enterprice, send to enterprice registration
+        localStorage.setItem("email", resBody.data.email)
+        localStorage.setItem("name", resBody.data.name)
+        router.push('/en/GetService')
+
       }
 
       if (resBody.code === 202) {
         // TODO: user created, send to enterprice registration
+        localStorage.setItem("email", resBody.data.email)
+        localStorage.setItem("name", resBody.data.name)
+        router.push('/en/GetService')
       }
     } catch (error) {
       console.log(error);
