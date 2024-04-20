@@ -26,9 +26,6 @@ export default function PayCard({ plan, km, road, trip, date, refund, price, isE
 
       const empresaId = resBody.data.id
       const email = localStorage.getItem("email")
-      
-      console.log("Email" + email);
-      console.log("Empresa" + empresaId);
 
       if (resBody.code === 200) {
         const response = await fetch(`/api/accounts`, {
@@ -43,11 +40,11 @@ export default function PayCard({ plan, km, road, trip, date, refund, price, isE
         })
 
         const responseBody = await response.json()
-        
+
         if (responseBody.code === 200) {
           router.push('/dashboard')
         }
-        
+
       }
     } catch (error) {
       console.log(error);
@@ -82,13 +79,13 @@ export default function PayCard({ plan, km, road, trip, date, refund, price, isE
             </div>
             <div className="flex flex-row gap-1">
               <span className="material-symbols-rounded">done</span>
-              <p>Its recommended to read the terms and conditions</p>
+              <p>Se recomienda leer los términos y condiciones</p>
             </div>
           </div>
           <div className="flex flex-row justify-end w-full gap-8 items-center">
             <p>{price}</p>
             <Button color="primary" className="text-white" onClick={handlePay}>
-              {isEnglish ? "Pay" : "Pagar"}
+              Pagar
             </Button>
           </div>
         </CardBody>

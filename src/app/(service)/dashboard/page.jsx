@@ -13,12 +13,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const columns = [
-  { name: "START ADDRESS", uid: "startAdrress" },
-  { name: "END ADDRESS", uid: "endAddress" },
-  { name: "INTERMEDIATE POINTS", uid: "intPoint" },
-  { name: "DISTANCE", uid: "distance" },
-  { name: "PASSENGERS NUMBER", uid: "passNumber" },
-  { name: "ACTIONS", uid: "actions" },
+  { name: "DIRECCION DE INICIO", uid: "startAdrress" },
+  { name: "DIRECCION DE DESTINO", uid: "endAddress" },
+  { name: "PUNTOS INTERMEDIOS", uid: "intPoint" },
+  { name: "DISTANCIA (KM)", uid: "distance" },
+  { name: "NÚMERO DE PASAJEROS", uid: "passNumber" },
+  { name: "ACCIONES", uid: "actions" },
 ];
 
 const trips = [
@@ -149,7 +149,7 @@ export default function Page() {
               "24 Oct",
               "30 Nov",
             ]}
-            chartTitle={"Km/Trip"}
+            chartTitle={"Km/Viaje"}
             color={"#E26969"}
             bgColor={"#BB3535"}
           />
@@ -165,7 +165,7 @@ export default function Page() {
               "24 Oct",
               "30 Nov",
             ]}
-            chartTitle={"Passengers/Trip"}
+            chartTitle={"Pasajeros/Viaje"}
             color={"#416C95"}
             bgColor={"#16436D"}
           />
