@@ -119,7 +119,7 @@ export default function Page() {
         <Table aria-label="adiwmaldw" align="center">
           <TableHeader columns={columns} className="">
             {(column) => (
-              <TableColumn key={column.uid} align="center" className="bg-red-100">
+              <TableColumn key={column.uid} align="center" className="bg-[#f2b882] text-blue-950">
                 {column.name}
               </TableColumn>
             )}

@@ -29,16 +29,16 @@ export default function SideBar() {
             >
                 {/* Normal User Routes */}
                 <ListboxSection title={isEnglish ? "Modules" : "Modulos"} classNames={{ heading: "text-black opacity-70" } + " gap-4"}>
-                    <ListboxItem key={"/es/app/dashboard/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
+                    <ListboxItem key={"/es/app/dashboard"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
                         <span className="text-xl">{isEnglish ? "Home" : "Inicio"}</span>
                     </ListboxItem>
-                    <ListboxItem key={"/dashboard/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
+                    <ListboxItem key={"/es/app/map"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
                         <span className="text-xl">{isEnglish ? "Map" : "Mapa"}</span>
                     </ListboxItem>
                     <ListboxItem key={"/dashboard/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
                         <span className="text-xl">{isEnglish ? "Schedule Control" : "Control de Horarios"}</span>
                     </ListboxItem>
-                    <ListboxItem key={"/es/app/employees/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
+                    <ListboxItem key={"/es/app/employees"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
                         <span className="text-xl">{isEnglish ? "Employee Management" : "Gestion de Empleados"}</span>
                     </ListboxItem>
                 </ListboxSection>
