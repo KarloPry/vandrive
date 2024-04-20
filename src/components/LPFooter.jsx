@@ -11,11 +11,11 @@ const Footer7Defaults = {
       ],
     },
   ],
-  footerText: "© 2024 315-150. All rights reserved.",
+  footerText: "© 2024 315-150. Todos los derechos reservados.",
   footerLinks: [
-    { title: "Privacy Policy", url: "#" },
-    { title: "Terms of Service", url: "#" },
-    { title: "Cookies Settings", url: "#" },
+    { title: "Política de Privacidad", url: "#" },
+    { title: "Términos del Servicio", url: "#" },
+    { title: "Confifuración de Cookies", url: "#" },1
   ],
 };
 

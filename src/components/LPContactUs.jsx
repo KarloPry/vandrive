@@ -5,7 +5,7 @@ import { Location } from "@relume_io/relume-ui";
 
 const Contact24Defaults = {
   tagline: "",
-  heading: "Contactanos",
+  heading: "Contáctanos",
   description: "En VanDrive, valoramos la comunicación directa y estamos listos para responder cualquier pregunta que tengas sobre nuestros servicios de traslado de personal.",
   contacts: [
     {

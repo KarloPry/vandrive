@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import Image from 'next/image'
 import { SolidChevronDown, Button } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from 'next/navigation';
+import ProfileClient from '../../components/ProfileClient';
 
 const Navbar2Defaults = {
   logo: {
@@ -37,13 +39,13 @@ export default function LPNavBar  (props)  {
   };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const genericHamburgerLine = `h-0.5 w-6 my-[3px] bg-white transition ease-in-out transform duration-300 lg:hidden`;
-
+  
   const handleLoginButtonClick = () => {
-    console.log("Login");
+    window.location.assign("/api/auth/login");
   };
 
-  const handleRegisterButtonClick = () => {
-    console.log("SignUp");
+  const handleLogoutButtonClick = (e) => {
+    window.location.assign("/api/auth/logout");
   };
 
   return (
@@ -87,7 +89,7 @@ export default function LPNavBar  (props)  {
               variant={button.variant}
               size={button.size}
               className="px-4 py-1 md:px-6 md:py-2 text-white hover:bg-orange-300 hover:text-black rounded-lg"
-              onClick={button.title === "Ingresar" ? handleLoginButtonClick : handleRegisterButtonClick}
+              onClick={button.title === "Ingresar" ? handleLoginButtonClick : handleLogoutButtonClick}
             >
                 {button.title}
               </Button>
@@ -170,6 +172,7 @@ const NavItemDropdown = ({ title, subLinks }) => {
           </motion.ul>
         </AnimatePresence>
       )}
+      <ProfileClient/>
     </div>
   );
 };
