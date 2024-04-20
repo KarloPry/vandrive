@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const Navbar2Defaults = {
   logo: {
-    src: "logo-letters.svg",
+    src: "/logo-letters.svg",
     alt: "Logo",
   },
   links: [
