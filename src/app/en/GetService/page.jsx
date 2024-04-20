@@ -44,6 +44,7 @@ const payData = [
 
 export default function Page() {
   const [activeCard, setActiveCard] = useState(1);
+  const [companyName, setcompanyName] = useState("")
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
   const activeCardData = cardsData.find((card) => card.id === activeCard);
 
@@ -107,8 +108,12 @@ export default function Page() {
               type="name"
               label="Company Name"
               labelPlacement="outside"
-              defaultValue="junior@nextui.org"
+              defaultValue=""
               className="w-full"
+              onChange={(e) => {
+                setcompanyName(e.target.value)
+                localStorage.setItem("companyName", e.target.value)
+              }}
             />
           </div>
           <div className="flex flex-col justify-start gap-8 w-full">

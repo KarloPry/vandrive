@@ -1,6 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-import { GoogleMap, useLoadScript, Marker, AdvancedMarker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { icon } from "leaflet";
 
 export default function HomeMaptest() {
@@ -36,35 +36,29 @@ function Map() {
       mapContainerClassName="map-container"
       onClick={onMapClick}
       >
-      {/* {markers.map((marker, index) => (
-          <Markers
+        {markers.map((marker, index) => (
+          <Marker
           key={index} 
           position={{ lat: marker.lat, lng: marker.lng }}
-          icon={icon({
-              iconUrl: "https://www.svgrepo.com/show/379072/marker.svg",
-              iconSize: [20, 20],
-              
-            })} />
-        ))} */}
+          icon={"/home.svg"} />
+        ))}
+        
 
-    <AdvancedMarker
-        position={{lat: 53.58675649147477, lng: 10.045572975464376}}
-        draggable={true}></AdvancedMarker>
     </GoogleMap>
   );
 }
 
-const Markers = ({points}) => {
-    return(
-        <>
-            {points.map((point)=>(
-                <AdvancedMarker key={point.key} position={point}>
-                    <span>😄</span>
-                </AdvancedMarker>
-            ))}
-        </>
-    );
- }
+// const Markers = ({points}) => {
+//     return(
+//         <>
+//             {points.map((point)=>(
+//                 <AdvancedMarker key={point.key} position={point}>
+//                     <span>😄</span>
+//                 </AdvancedMarker>
+//             ))}
+//         </>
+//     );
+//  }
 
 
 // "use client";

@@ -1,9 +1,9 @@
-"use client"
-import HomeMaptest from "@/components/MapTest";
+// "use client"
+// import HomeMaptest from "@/components/MapTest";
 
 
-export default function Page() {
-    return (
-        <HomeMaptest />
-    )
-}
+// export default function Page() {
+//     return (
+//         <HomeMaptest />
+//     )
+// }

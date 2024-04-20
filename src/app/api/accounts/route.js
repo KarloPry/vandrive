@@ -19,6 +19,7 @@ export async function GET() {
 export async function POST(request) {
     try {
 
+        
         const { email, name } = await request.json()
 
         const user = await prisma.account.findMany({
@@ -49,4 +50,27 @@ export async function POST(request) {
         console.log(error);
         return NextResponse.json({ code: 500, message: "Error"})
     }
+}
+
+export async function PATCH( request ) {
+    try {
+
+        const { email, empresaId } = await request.json()
+
+        const account = await prisma.account.update({
+            where: {
+                email
+            },
+            data: {
+                empresaId
+            }
+        })
+
+        return NextResponse.json({ code: 200, message: "OK", data: account })
+        
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({ code: 500, message: "ERROR"})
+    }
+    
 }

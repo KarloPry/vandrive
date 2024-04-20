@@ -18,9 +18,9 @@ model User {
 model Empresa {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   nombre   String @unique
-  plan     Plan   @default(On_demand)
-  latitud  Float
-  longitud Float
+  plan     Plan   @default(Gold)
+  latitud  Float?
+  longitud Float?
 
   accounts  Account[]
   viajes    Viaje[]
