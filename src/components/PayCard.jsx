@@ -15,7 +15,7 @@ export default function PayCard({ plan, km, road, trip, date, refund, price, isE
             <p>{trip}</p>
             <p>{date}</p>
             <p>{refund}</p>
-            <p>It's recommended to read the terms and conditions</p>
+            <p>Its recommended to read the terms and conditions</p>
             </div>
             <div className="flex flex-row justify-end w-full gap-8 items-center">
                 <p>{price}</p>
