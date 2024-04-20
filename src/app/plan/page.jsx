@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Checkbox, Input } from "@nextui-org/react";
 import CardPricing from "@/components/CardPricing";
-import LogoLetras from "../../../../public/logo-letras.svg";
-import Pagos from "../../../../public/Pago.svg";
+import LogoLetras from "../../../public/logo-letras.svg";
+import Pagos from "../../../public/Pago.svg";
 import PayCard from "@/components/PayCard";
 
 const cardsData = [

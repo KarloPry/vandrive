@@ -45,9 +45,9 @@ export default function PayCard({ plan, km, road, trip, date, refund, price, isE
         const responseBody = await response.json()
         
         if (responseBody.code === 200) {
-          // router.push('/en/app/LandingPage')
-          console.log("GO TO");
+          router.push('/dashboard')
         }
+        
       }
     } catch (error) {
       console.log(error);

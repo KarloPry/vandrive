@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { BiEnvelope, BiMessageDetail, BiPhone } from "react-icons/bi";
 import { Location } from "@relume_io/relume-ui";
 
@@ -9,11 +9,16 @@ import { LPLogo } from '@/components/LPLogo'
 import LPNavBar from '@/components/LPNavBar'
 import { LPTestimonial } from '@/components/LPTestimonial'
 import Vanlejandro from '@/components/DHeader'
-import React from 'react'
+import React, { useEffect } from 'react'
 import DCardPricingEN from "@/components/DCardPricingEN";
 import { LPHeader } from "@/components/LPHeader";
+import { getSession } from "@auth0/nextjs-auth0";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
+  const { user, error, isLoading } = useUser();
+  const router = useRouter()
 
   const handleLoginButtonClick = () => {
     window.location.assign("/api/auth/login");
@@ -22,6 +27,67 @@ const page = () => {
   const handleLogoutButtonClick = (e) => {
     window.location.assign("/api/auth/logout");
   };
+
+  const DefineUser = async (email, user) => {
+    try {
+      
+      const res = await fetch(`/api/accounts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          name: user,
+        }),
+      });
+
+      const resBody = await res.json();
+
+      if (resBody.code === 200) {
+        localStorage.setItem("id", resBody.data.id)
+        localStorage.setItem("name", resBody.data.name)
+        localStorage.setItem("email", resBody.data.email)
+        localStorage.setItem("empresaId", resBody.data.empresaId)
+
+        router.push('/dashboard')
+      }
+
+      if (resBody.code === 201) {
+        // TODO: user exists but has no enterprice, send to enterprice registration
+        localStorage.setItem("id", resBody.data.id)
+        localStorage.setItem("name", resBody.data.name)
+        localStorage.setItem("email", resBody.data.email)
+
+        router.push('/plan')
+      }
+
+      if (resBody.code === 202) {
+        // TODO: user created, send to enterprice registration
+        localStorage.setItem("id", resBody.data.id)
+        localStorage.setItem("name", resBody.data.name)
+        localStorage.setItem("email", resBody.data.email)
+
+        router.push('/plan')
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user !== undefined) {
+      if (!user.email_verified) {
+        // TODO: Send user to verify email or show popup to verify email
+
+        console.log(user);
+      }
+
+      DefineUser(user.email, user.nickname);
+    }
+  }, [user])
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
@@ -160,4 +226,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

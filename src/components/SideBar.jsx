@@ -22,13 +22,14 @@ export default function SideBar() {
                 disabledKeys={disabledKeys}
                 selectedKeys={[selected]}
                 onAction={(key) => { router.push(String(key)); }}
-                className='flex items-center h-full'
-                classNames={{ list: "h-full", }}
+                className='flex justify-start items-center h-full'
+                // classNames={{ list: "h-full", }}
                 topContent={<SideBarTopContent />}
                 bottomContent={<SideBarBottomContent />}
             >
                 {/* Normal User Routes */}
-                <ListboxSection title={isEnglish ? "Modules" : "Modulos"} classNames={{ heading: "text-black opacity-70" } + " gap-4"}>
+                {/* <ListboxSection title={isEnglish ? "Modules" : "Modulos"} classNames={{ heading: "text-black opacity-70" } + " gap-4"}> */}
+                {/* <div> */}
                     <ListboxItem key={"/es/app/dashboard"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
                         <span className="text-xl">{isEnglish ? "Home" : "Inicio"}</span>
                     </ListboxItem>
@@ -41,7 +42,8 @@ export default function SideBar() {
                     <ListboxItem key={"/es/app/employees"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
                         <span className="text-xl">{isEnglish ? "Employee Management" : "Gestion de Empleados"}</span>
                     </ListboxItem>
-                </ListboxSection>
+                {/* </div> */}
+                {/* </ListboxSection> */}
             </Listbox>
         </div>
     );
@@ -56,7 +58,7 @@ function SideBarTopContent() {
 function SideBarBottomContent() {
     return (
         <>
-            <Divider className='my-3 bg-red-400' />
+            <Divider className='my-3 bg-red-400 mt-[190%]' />
             <Dropdown placement="right-end" showArrow>
                 <DropdownTrigger>
                     <User
