@@ -10,6 +10,7 @@ import LPNavBar from '@/components/LPNavBar'
 import { LPTestimonial } from '@/components/LPTestimonial'
 import Vanlejandro from '@/components/DHeader'
 import React from 'react'
+import DCardPricingEN from "@/components/DCardPricingEN";
 
 const Footer7Defaults = {
   footerText: "© 2024 315-150. All rights reserved.",
@@ -53,7 +54,7 @@ const page = () => {
         <div className="mx-auto mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
           <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-blue-950">Pricing Plans</h1>
         </div>
-        <DCardPricing/>
+        <DCardPricingEN/>
         <LPTestimonial
           heading = {"Customer testimonials"}
           description = {"At VanDrive, we pride ourselves on providing exceptional service that not only meets, but exceeds our customers' expectations."}
