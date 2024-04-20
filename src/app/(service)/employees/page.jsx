@@ -7,12 +7,12 @@ import ModalPersonActionsEN from "@/components/ModalPersonActionsEN";
 import ModalEditUserEN from "@/components/ModalEditUserEN";
 
 const columns = [
-  { name: "NAME", uid: "nombre" },
+  { name: "NOMBRE", uid: "nombre" },
   { name: "ENTERPRISE", uid: "empresa" },
-  { name: "DEPARTMENT", uid: "departamento" },
-  { name: "LATITUDE", uid: "latitud" },
-  { name: "LONGITUDE", uid: "longitud" },
-  { name: "EDIT", uid: "editar" }
+  { name: "DEPARTAMENTO", uid: "departamento" },
+  { name: "LATITUD", uid: "latitud" },
+  { name: "LONGITUD", uid: "longitud" },
+  { name: "EDITAR", uid: "editar" }
 ]
 
 const trips = [
@@ -20,7 +20,7 @@ const trips = [
     "id": "1",
     "Nombre": "Juan Pérez",
     "Empresa": "ACME Corporation",
-    "Departamento": "Sales",
+    "Departamento": "Ventas",
     "Latitud": 40.7128,
     "Longitud": -74.0060
   },
@@ -36,7 +36,7 @@ const trips = [
     "id": "3",
     "Nombre": "Pedro López",
     "Empresa": "ACME Corporation",
-    "Departamento": "Human Resources",
+    "Departamento": "Recursos humanos",
     "Latitud": 40.7128,
     "Longitud": -74.0060
   },
@@ -44,7 +44,7 @@ const trips = [
     "id": "4",
     "Nombre": "Laura Martínez",
     "Empresa": "ACME Corporation",
-    "Departamento": "Tecnology",
+    "Departamento": "Tecnología",
     "Latitud": 40.7128,
     "Longitud": -74.0060
   },
@@ -52,7 +52,7 @@ const trips = [
     "id": "5",
     "Nombre": "Carlos Rodríguez",
     "Empresa": "ACME Corporation",
-    "Departamento": "Sales",
+    "Departamento": "Ventas",
     "Latitud": 40.7128,
     "Longitud": -74.0060
   },
@@ -68,7 +68,7 @@ const trips = [
     "id": "7",
     "Nombre": "Javier Gómez",
     "Empresa": "ACME Corporation",
-    "Departamento": "Human Resources",
+    "Departamento": "Recursos humanos",
     "Latitud": 40.7128,
     "Longitud": -74.0060
   },
@@ -76,7 +76,7 @@ const trips = [
     "id": "8",
     "Nombre": "Sara Torres",
     "Empresa": "ACME Corporation",
-    "Departamento": "Tecnology",
+    "Departamento": "Tecnología",
     "Latitud": 40.7128,
     "Longitud": -74.0060
   },
@@ -84,7 +84,7 @@ const trips = [
     "id": "9",
     "Nombre": "Mario Sánchez",
     "Empresa": "ACME Corporation",
-    "Departamento": "Sales",
+    "Departamento": "Ventas",
     "Latitud": 40.7128,
     "Longitud": -74.0060
   },
@@ -98,12 +98,24 @@ const trips = [
   }
 ];
 
+
+
+
 export default function Page() {
   // const [trips, setTrips] = useState();
   const router = useRouter();
+
+  const [tripsData, setTripsData] = useState([]);
+
+  const getData = async () => {
+    const empresaId = localStorage.getItem("empresaId")
+
+    const response = await fetch('/api/viajes' + empresaId)
+    console.log(await response.json());
+  }
+
   useEffect(() => {
-    //
-    // setTrips(respuesta de la API)
+
   }, [])
 
   const [filteredTrips, setFilteredTrips] = useState(trips);
@@ -141,7 +153,7 @@ export default function Page() {
         );
       case "editar":
         return (
-          <ModalEditUserEN/>
+          <ModalEditUserEN />
         );
     }
   }
@@ -151,7 +163,7 @@ export default function Page() {
       <div className="bg-white p-4 rounded-xl">
         <div className="flex flex-row justify-between mb-4">
           <div className="flex gap-2 items-center">
-            <h2 className="text-2xl inline-block">Registered Employees</h2>
+            <h2 className="text-2xl inline-block">Empleados registrados</h2>
             <span className="material-symbols-rounded inline-block">badge</span>
           </div>
           <ModalPersonActionsEN />

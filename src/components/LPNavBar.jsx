@@ -42,6 +42,7 @@ export default function LPNavBar  (props)  {
   
   const handleLoginButtonClick = () => {
     window.location.assign("/api/auth/login");
+    alert("Alert here")
   };
 
   const handleLogoutButtonClick = (e) => {
@@ -82,18 +83,9 @@ export default function LPNavBar  (props)  {
           ))}
         </ul>
         <div className="flex min-h-16 items-center justify-end gap-x-4">
-          <div>
-            {buttons.map((button, index) => (
-              <Button
-              key={`${button.title}-${index}`}
-              variant={button.variant}
-              size={button.size}
-              className="px-4 py-1 md:px-6 md:py-2 text-white hover:bg-orange-300 hover:text-black rounded-lg"
-              onClick={button.title === "Ingresar" ? handleLoginButtonClick : handleLogoutButtonClick}
-            >
-                {button.title}
-              </Button>
-            ))}
+          <div className="flex flex-row gap-2">
+            <a href="/api/auth/login" className='border-1 rounded-md transition-colors hover:bg-orange-500 text-white px-6 py-2'>Log In</a>
+            <a href="/api/auth/signup" className='rounded-md transition-colors hover:bg-orange-500 text-white px-6 py-2'>Sign Up</a>
           </div>
           <button
             className="-mr-2 flex size-12 flex-col items-center justify-center lg:hidden"
