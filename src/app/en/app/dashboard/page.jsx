@@ -2,6 +2,7 @@
 import { Avatar, Button } from "@nextui-org/react";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react'
 import { LineGraph } from "@/components/LineGraph";
+import { useEffect, useState } from "react";
 
 const columns = [
   { name: "START ADDRESS", uid: "startAdrress" },
@@ -58,12 +59,16 @@ const trips = [
 
 
 export default function Page() {
+  // const [trips, setTrips] = useState();
+
+  useEffect(() => {
+    //
+    // setTrips(respuesta de la API)
+  }, [])
 
   const renderCell = (trip, columnKey) => {
-    console.log(columnKey);
     switch (columnKey) {
       case "startAdrress":
-        console.log(trip.StartAddress);
         return (
           <>{trip.StartAddress}</>
         );
@@ -91,7 +96,7 @@ export default function Page() {
   }
 
   return (
-    <div className="flex flex-col flex-1 p-4 bg-[#F2F2F2] gap-4">
+    <div className="flex flex-col flex-1 p-4 bg-[#F2F2F2] gap-4 overflow-y-auto overflow-x-hidden">
       <div className="flex w-full gap-2 items-center justify-end">
         <Avatar showFallback src='https://images.unsplash.com/broken' />
         <p>Diego Martínez García</p>
@@ -123,12 +128,24 @@ export default function Page() {
           </TableBody>
         </Table>
       </div>
-      <div className="flex gap-2">
-        <div className="w-full h-96 bg-white rounded-2xl p-4">
-          <LineGraph />
+      <div className="flex gap-4">
+        <div className="h-96 flex-1 bg-white rounded-2xl p-4">
+          <LineGraph
+            chartData={[1, 2, 3, 5, 6, 7]}
+            chartLabels={["27 Jun", "10 Jul", "15 Ago", "20 Sep", "24 Oct", "30 Nov"]}
+            chartTitle={"Km/Trip"}
+            color={"#E26969"}
+            bgColor={"#BB3535"}
+          />
         </div>
-        <div className="w-full h-96 bg-white rounded-2xl p-4">
-          <LineGraph />
+        <div className="h-96 flex-1 bg-white rounded-2xl p-4">
+          <LineGraph
+            chartData={[15, 17, 20, 20, 10, 12]}
+            chartLabels={["27 Jun", "10 Jul", "15 Ago", "20 Sep", "24 Oct", "30 Nov"]}
+            chartTitle={"Passengers/Trip"}
+            color={"#416C95"}
+            bgColor={"#16436D"}
+          />
         </div>
       </div>
     </div>

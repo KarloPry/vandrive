@@ -20,33 +20,35 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
+export function LineGraph({ chartTitle, chartLabels, chartData, color, bgColor }) {
+
+  console.log(chartTitle);
+  console.log(chartLabels);
+  console.log(chartData);
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: chartTitle,
+      },
     },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
-  },
-};
+  };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'km/trip',
-      data: [1, 2, 3, 4, 5, 6],
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    }
-  ],
-};
-
-export function LineGraph({ }) {
+  const data = {
+    labels: chartLabels,
+    datasets: [
+      {
+        label: chartTitle,
+        data: chartData,
+        borderColor: color,
+        backgroundColor: bgColor,
+      }
+    ]
+  };
   return <Line options={options} data={data} />;
 }
