@@ -19,27 +19,31 @@ export async function GET() {
 export async function POST(request) {
     try {
 
-        // const data = await request.json()
-        // console.log(data);
+        const { email, name } = await request.json()
 
-        const { name, email, password, isOwner, latitud, longitud, empresaId } = await request.json();
+        const user = await prisma.account.findMany({
+            where: {
+                email
+            }
+        })
 
-        if (
-            name === null ||
-            email === null ||
-            password === null ||
-            latitud === null ||
-            longitud === null ||
-            empresaId === null
-        ) return NextResponse.json({ code: 400, message: "Missing fields" })
+        if ( user.length !== 0 ) {
+
+            if ( user[0].empresaId === null ) {
+                return NextResponse.json({ code: 201, message: "existsNoEmpresa", data: user[0] })
+            }
+
+            return NextResponse.json({ code: 200, message: "exists", data: user[0] })
+        }
 
         const account = await prisma.account.create({
             data: {
-                name,
                 email,
-                password
+                name
             }
         })
+
+        return NextResponse.json({ code: 202, message: "created", data: account })
         
     } catch (error) {
         console.log(error);

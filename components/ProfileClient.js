@@ -1,31 +1,57 @@
-'use client';
+"use client";
 
-import { useUser } from '@auth0/nextjs-auth0/client';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function ProfileClient() {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
 
+  const DefineUser = async (email, user) => {
+    try {
+      
+      const res = await fetch(`/api/accounts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: {
+          email: email,
+          user: user,
+        },
+      });
+
+      console.log(res)
+
+      const resBody = await res.json();
+
+      if (resBody.code === 200) {
+        // TODO: user exists, send to dashboard
+      }
+
+      if (resBody.code === 201) {
+        // TODO: user exists but has no enterprice, send to enterprice registration
+      }
+
+      if (resBody.code === 202) {
+        // TODO: user created, send to enterprice registration
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     if (user !== undefined) {
-
       if (!user.email_verified) {
         // TODO: Send user to verify email or show popup to verify email
-        // router.push('/verifyemail');
+
         console.log(user);
       }
-      
+
+      DefineUser(user.email, user.nickname);
     }
-
-    
-    // 
-    // router.push('/main');
-
-
-    
-    
   }, [user]);
 
   if (isLoading) return <div>Loading...</div>;

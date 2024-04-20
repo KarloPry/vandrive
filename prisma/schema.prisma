@@ -29,22 +29,16 @@ model Empresa {
 enum Plan {
   On_demand
   Gold
-  Enterprice
+  Enterprise
 }
 
 model Account {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
   name      String
-  email     String   @unique
-  password  String?
-  isOwner   Boolean  @default(false)
-  latitud   Float?
-  longitud  Float?
-  empresaId String?   @db.ObjectId
-  viajesid  String[] @db.ObjectId
+  email     String  @unique
+  empresaId String? @db.ObjectId
 
   Empresa Empresa? @relation(fields: [empresaId], references: [id])
-  Viaje   Viaje[] @relation(fields: [viajesid], references: [id])
 }
 
 // TODO: checar credenciales con AUTH0, verificar como se entrega eso
@@ -59,13 +53,13 @@ model Viaje {
   PuntoFinal        Punto
   puntosIntermedios Punto[]
   distancia         Float?
-  pasajerosId       String[]  @db.ObjectId
   empresaId         String    @db.ObjectId
+  empleadosId       String[]  @db.ObjectId
 
-  pasajeros Account[] @relation(fields: [pasajerosId], references: [id])
-  unidad    Unidad    @relation(fields: [unidadId], references: [id])
-  chofer    Chofer    @relation(fields: [choferid], references: [id])
-  empresa   Empresa   @relation(fields: [empresaId], references: [id])
+  unidad    Unidad     @relation(fields: [unidadId], references: [id])
+  chofer    Chofer     @relation(fields: [choferid], references: [id])
+  empresa   Empresa    @relation(fields: [empresaId], references: [id])
+  Empleados Empleado[] @relation(fields: [empleadosId], references: [id])
 }
 
 type Punto {
@@ -85,6 +79,16 @@ model Unidad {
 enum TipoUnidad {
   van
   camion
+}
+
+model Empleado {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  longitud Float
+  latitud  Float
+  viajesId String[] @db.ObjectId
+
+  Viajes Viaje[] @relation(fields: [viajesId], references: [id])
 }
 
 model Chofer {
