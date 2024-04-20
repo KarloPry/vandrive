@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 const Footer7Defaults = {
   image: {
     src: "svg-van-drive.svg",
@@ -22,21 +20,15 @@ const Footer7Defaults = {
 };
 
 function LPFooter(props) {
-  const { image, footerText, columnLinks, footerLinks } = {
+  const { footerText, columnLinks, footerLinks } = {
     ...Footer7Defaults,
     ...props,
   };
   return (
-    <footer className="px-[5%] py-12 md:py-18 lg:py-20">
+    <footer className="px-[5%] py-12 md:py-18 lg:py-20 bg-orange-100 text-black">
       <div className="container">
         <div className="flex flex-col items-center pb-12 md:pb-18 lg:pb-20">
           <div className="mb-8">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={300}
-              height={40}
-            />
           </div>
           {columnLinks.map((column, index) => (
             <ul
