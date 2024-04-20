@@ -23,6 +23,7 @@ model Empresa {
   longitud Float
 
   accounts Account[]
+  viajes   Viaje[]
 }
 
 enum Plan {
@@ -35,14 +36,14 @@ model Account {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   email     String   @unique
-  password  String
+  password  String?
   isOwner   Boolean  @default(false)
-  latitud   Float
-  longitud  Float
-  empresaId String   @db.ObjectId
+  latitud   Float?
+  longitud  Float?
+  empresaId String?   @db.ObjectId
   viajesid  String[] @db.ObjectId
 
-  Empresa Empresa @relation(fields: [empresaId], references: [id])
+  Empresa Empresa? @relation(fields: [empresaId], references: [id])
   Viaje   Viaje[] @relation(fields: [viajesid], references: [id])
 }
 
@@ -59,10 +60,12 @@ model Viaje {
   puntosIntermedios Punto[]
   distancia         Float?
   pasajerosId       String[]  @db.ObjectId
+  empresaId         String    @db.ObjectId
 
-  Pasajeros Account[] @relation(fields: [pasajerosId], references: [id])
+  pasajeros Account[] @relation(fields: [pasajerosId], references: [id])
   unidad    Unidad    @relation(fields: [unidadId], references: [id])
   chofer    Chofer    @relation(fields: [choferid], references: [id])
+  empresa   Empresa   @relation(fields: [empresaId], references: [id])
 }
 
 type Punto {

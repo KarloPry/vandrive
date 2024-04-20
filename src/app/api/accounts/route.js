@@ -19,8 +19,27 @@ export async function GET() {
 export async function POST(request) {
     try {
 
-        const data = await request.json()
-        console.log(data);
+        // const data = await request.json()
+        // console.log(data);
+
+        const { name, email, password, isOwner, latitud, longitud, empresaId } = await request.json();
+
+        if (
+            name === null ||
+            email === null ||
+            password === null ||
+            latitud === null ||
+            longitud === null ||
+            empresaId === null
+        ) return NextResponse.json({ code: 400, message: "Missing fields" })
+
+        const account = await prisma.account.create({
+            data: {
+                name,
+                email,
+                password
+            }
+        })
         
     } catch (error) {
         console.log(error);
