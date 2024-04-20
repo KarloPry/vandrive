@@ -14,6 +14,15 @@ import DCardPricingEN from "@/components/DCardPricingEN";
 import { LPHeader } from "@/components/LPHeader";
 
 const page = () => {
+
+  const handleLoginButtonClick = () => {
+    window.location.assign("/api/auth/login");
+  };
+
+  const handleLogoutButtonClick = (e) => {
+    window.location.assign("/api/auth/logout");
+  };
+
   return (
     <>
         <LPNavBar
@@ -31,11 +40,13 @@ const page = () => {
             {
               title: "Log In",
               size: "sm",
+              onClick: handleLoginButtonClick,
             },
             {
               title: "Sign Up",
               size: "sm",
               variant: "outline",
+              onClick: handleLogoutButtonClick,
             }
           ]}
         />
