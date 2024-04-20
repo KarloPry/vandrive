@@ -11,6 +11,9 @@ export default function SideBar() {
     let disabledKeys = [];
     const selected = pathname.split("/").pop() || "/dashboard/login";
 
+    // Determine if the language is English based on the URL
+    const isEnglish = pathname.includes("/en/");
+
     return (
         <div className="flex flex-col px-2 py-4 gap-4 w-full max-w-60 shadow-lg ">
             <Listbox
@@ -25,18 +28,18 @@ export default function SideBar() {
                 bottomContent={<SideBarBottomContent />}
             >
                 {/* Normal User Routes */}
-                <ListboxSection title={"Modulos"} classNames={{ heading: "text-black opacity-70" } + " gap-4"}>
+                <ListboxSection title={isEnglish ? "Modules" : "Modulos"} classNames={{ heading: "text-black opacity-70" } + " gap-4"}>
                     <ListboxItem key={"/dashboard/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
-                        <span className="text-xl">Inicio</span>
+                        <span className="text-xl">{isEnglish ? "Home" : "Inicio"}</span>
                     </ListboxItem>
                     <ListboxItem key={"/dashboard/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
-                        <span className="text-xl">Mapa</span>
+                        <span className="text-xl">{isEnglish ? "Map" : "Mapa"}</span>
                     </ListboxItem>
                     <ListboxItem key={"/dashboard/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
-                        <span className="text-xl">Control de Horarios</span>
+                        <span className="text-xl">{isEnglish ? "Schedule Control" : "Control de Horarios"}</span>
                     </ListboxItem>
                     <ListboxItem key={"/dashboard/"} className="transition-all mt-4 flex items-center gap-4 py-2 px-3 hover:!bg-red-400 hover:!text-white">
-                        <span className="text-xl">Gestion de Empleados</span>
+                        <span className="text-xl">{isEnglish ? "Employee Management" : "Gestion de Empleados"}</span>
                     </ListboxItem>
                 </ListboxSection>
             </Listbox>

@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Button, Card, CardBody, CardHeader } from "@nextui-org/react";
 
-export default function PayCard({ plan, km, road, trip, date, refund, price }) {
+export default function PayCard({ plan, km, road, trip, date, refund, price, isEnglish }) {
   return (
     <div className="flex flex-col justify-start w-full">
       <Card className="w-full p-8">
@@ -15,14 +15,18 @@ export default function PayCard({ plan, km, road, trip, date, refund, price }) {
             <p>{trip}</p>
             <p>{date}</p>
             <p>{refund}</p>
-            <p>Es recomendado leer los terminos y condiciones</p>
+            <p>It's recommended to read the terms and conditions</p>
             </div>
             <div className="flex flex-row justify-end w-full gap-8 items-center">
                 <p>{price}</p>
-                <Button color="primary" className="text-white">Pagar</Button>
+                <Button color="primary" className="text-white">
+                  {isEnglish ? "Pay" : "Pagar"}
+                </Button>
             </div>
         </CardBody>
       </Card>
     </div>
   );
 }
+
+

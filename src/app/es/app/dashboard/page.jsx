@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const columns = [
-  { name: "INI", uid: "startAdrress" },
-  { name: "END ADDRESS", uid: "endAddress" },
-  { name: "INTERMEDIATE POINTS", uid: "intPoint" },
-  { name: "DISTANCE", uid: "distance" },
-  { name: "PASSENGERS NUMBER", uid: "passNumber" },
-  { name: "ACTIONS", uid: "actions" }
+  { name: "INICIO", uid: "startAdrress" },
+  { name: "DIRECCIÓN DE FIN", uid: "endAddress" },
+  { name: "PUNTOS INTERMEDIOS", uid: "intPoint" },
+  { name: "DISTANCIA", uid: "distance" },
+  { name: "NÚMERO DE PASAJEROS", uid: "passNumber" },
+  { name: "ACCIONES", uid: "actions" }
 ]
 
 const trips = [
@@ -98,29 +98,30 @@ export default function Page() {
 
   return (
     <div className="flex flex-col flex-1 p-4 bg-[#F2F2F2] gap-4 overflow-y-auto overflow-x-hidden">
-      <div className="w-full flex items-center justify-end gap-4">
-        <Button
-          onPress={() => router.push("/en/app/map")}
-          color="primary"
-          className="text-white"
-          startContent={<span className="material-symbols-rounded !text-white">add</span>}
-        >Add trip</Button>
-        <div className="flex gap-2 items-center justify-end">
-          <Avatar showFallback src='https://images.unsplash.com/broken' />
-          <p>Diego Martínez García</p>
-        </div>
-      </div>
       <div className="bg-white p-4 rounded-xl">
-        <div className="flex gap-2 items-center">
-          <h2 className="text-2xl inline-block">Historial de Viajes</h2>
-          <span className="material-symbols-rounded inline-block">history</span>
+      <div className="flex flex-row justify-between mb-4">
+          <div className="flex gap-2 items-center">
+            <h2 className="text-2xl inline-block">Trip record</h2>
+            <span className="material-symbols-rounded inline-block">
+              history
+            </span>
+          </div>
+          <Button
+            onPress={() => router.push("/en/app/map")}
+            color="primary"
+            className="text-white"
+            startContent={
+              <span className="material-symbols-rounded !text-white">add</span>
+            }
+          >
+            Añadir Viaje
+          </Button>
         </div>
-
         <Table aria-label="adiwmaldw">
           <TableHeader columns={columns}>
             {
               (column) => (
-                <TableColumn key={column.uid} align="center">
+                <TableColumn key={column.uid} align="center" className="bg-red-100">
                   {column.name}
                 </TableColumn>
               )
