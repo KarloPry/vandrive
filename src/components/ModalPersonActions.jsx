@@ -7,11 +7,10 @@ import { useEffect, useState } from "react";
 const ModalPersonActions = ({ person }) => {
   const [form, setForm] = useState({
     name: "",
-    apaterno: "",
-    amaterno: "",
+    empresa: "",
+    departamento: "",
     longitud: "",
     latitud: "",
-    tags: [""]
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -25,8 +24,8 @@ const ModalPersonActions = ({ person }) => {
         onPress: () => {
           setIsModalOpen(!isModalOpen);
         },
-        color: "secondary",
-        className: "min-w-min"
+        color: "primary",
+        className: "min-w-min text-white",
       }, 
         "Agregar usuario"
       ), 
@@ -49,16 +48,16 @@ const ModalPersonActions = ({ person }) => {
               React.createElement("div", { className: "flex gap-3 flex-1" }, 
                 React.createElement(Input, {
                   type: "text",
-                  label: "Apellido Paterno",
-                  placeholder: "Escribe el apellido paterno de la persona",
+                  label: "Empresa",
+                  placeholder: "Escribe la empresa a la que pertenece",
                   value: form.apaterno,
                   onValueChange: (apaterno) => setForm({ ...form, apaterno }),
                   isRequired: true
                 }), 
                 React.createElement(Input, {
                   type: "text",
-                  label: "Apellido Materno",
-                  placeholder: "Escribe el apellido materno de la persona",
+                  label: "Departamento",
+                  placeholder: "Escribe el departamento al que pertenece",
                   value: form.amaterno,
                   onValueChange: (amaterno) => setForm({ ...form, amaterno }),
                   isRequired: true
@@ -84,7 +83,7 @@ const ModalPersonActions = ({ person }) => {
               ),
             ), 
             React.createElement(ModalFooter, null, 
-              React.createElement(Button, { color: "secondary" }, "Guardar")
+              React.createElement(Button, { color: "primary", className:"text-white" }, "Guardar")
             )
           )
         )

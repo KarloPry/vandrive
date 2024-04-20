@@ -1,119 +1,186 @@
-"use client";
-
+"use client"
+import { Avatar, Button, Input } from "@nextui-org/react";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react'
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import ModalPersonActions from "@/components/ModalPersonActions";
-import { Input, Table, TableHeader, TableBody, TableRow, TableCell, TableColumn, Button } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
+import ModalEditUser from "@/components/ModalEditUser";
 
 const columns = [
-  { name: "Nombre", id: "name" },
-  { name: "Longitud", id: "longitud" },
-  { name: "Latitud", id: "latitud" },
-  { name: "Acciones", id: "actions" }
-];
+  { name: "NOMBRE", uid: "nombre" },
+  { name: "EMPRESA", uid: "empresa" },
+  { name: "DEPARTAMENTO", uid: "departamento" },
+  { name: "LATITUD", uid: "latitud" },
+  { name: "LONGITUD", uid: "longitud" },
+  { name: "EDITAR", uid: "editar" }
+]
 
-const fakeData = [
+const trips = [
   {
     "id": "1",
-    "name": "Juan",
-    "apaterno": "Pérez",
-    "amaterno": "González",
-    "genero": "Masculino",
-    "longitud": "20.60641755391972",
-    "latitud": "-100.18626905743827",
-    "tags": ["programación", "desarrollo web"]
+    "Nombre": "Juan Pérez",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Ventas",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
   },
   {
     "id": "2",
-    "name": "María",
-    "apaterno": "López",
-    "amaterno": "Martínez",
-    "genero": "Femenino",
-    "longitud": "20.60641755391972",
-    "latitud": "-100.18626905743827",
-    "tags": ["programación", "desarrollo web"]
+    "Nombre": "María García",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Marketing",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
   },
   {
     "id": "3",
-    "name": "Carlos",
-    "apaterno": "García",
-    "amaterno": "Hernández",
-    "genero": "Masculino",
-    "longitud": "20.60641755391972",
-    "latitud": "-100.18626905743827",
-    "tags": ["programación", "desarrollo web"]
+    "Nombre": "Pedro López",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Recursos Humanos",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
   },
   {
     "id": "4",
-    "name": "Ana",
-    "apaterno": "Martínez",
-    "amaterno": "Gómez",
-    "genero": "Femenino",
-    "longitud": "20.60641755391972",
-    "latitud": "-100.18626905743827",
-    "tags": ["programación", "desarrollo web"]
+    "Nombre": "Laura Martínez",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Tecnología",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
   },
   {
     "id": "5",
-    "name": "Jorge",
-    "apaterno": "Sánchez",
-    "amaterno": "Rodríguez",
-    "genero": "Masculino",
-    "longitud": "20.60641755391972",
-    "latitud": "-100.18626905743827",
-    "tags": ["programación", "desarrollo web"]
+    "Nombre": "Carlos Rodríguez",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Ventas",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
   },
   {
     "id": "6",
-    "name": "Laura",
-    "apaterno": "Gómez",
-    "amaterno": "Díaz",
-    "genero": "Femenino",
-    "longitud": "20.60641755391972",
-    "latitud": "-100.18626905743827",
-    "tags": ["programación", "desarrollo web"]
+    "Nombre": "Ana Ramírez",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Marketing",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
+  },
+  {
+    "id": "7",
+    "Nombre": "Javier Gómez",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Recursos Humanos",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
+  },
+  {
+    "id": "8",
+    "Nombre": "Sara Torres",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Tecnología",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
+  },
+  {
+    "id": "9",
+    "Nombre": "Mario Sánchez",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Ventas",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
+  },
+  {
+    "id": "10",
+    "Nombre": "Elena Vargas",
+    "Empresa": "ACME Corporation",
+    "Departamento": "Marketing",
+    "Latitud": 40.7128,
+    "Longitud": -74.0060
   }
 ];
 
-const renderCell = (columnKey, person) => {
-  if (columnKey == "name") return React.createElement(React.Fragment, null, person.name);
-  if (columnKey == "longitud") return React.createElement(React.Fragment, null, person.longitud);
-  if (columnKey == "latitud") return React.createElement(React.Fragment, null, person.latitud);
-  if (columnKey == "actions") return (
-    React.createElement(Button, { size: "sm", variant: "light", color: "default", isIconOnly: true },
-      React.createElement("span", { className: "material-symbols-outlined icon-sm" }, "edit"))
-  );
-};
-
 export default function Page() {
-  const [peopleFiltered, setPeopleFiltered] = useState(fakeData);
-  const [people, setPeople] = useState(fakeData);
-  const [personSearched, setPersonSearched] = useState("");
+  // const [trips, setTrips] = useState();
+  const router = useRouter();
+  useEffect(() => {
+    //
+    // setTrips(respuesta de la API)
+  }, [])
+
+  const [filteredTrips, setFilteredTrips] = useState(trips);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    setFilteredTrips(
+      trips.filter((trip) =>
+        trip.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm]);
+
+  const renderCell = (trip, columnKey) => {
+    switch (columnKey) {
+      case "nombre":
+        return (
+          <>{trip.Nombre}</>
+        );
+      case "empresa":
+        return (
+          <>{trip.Empresa}</>
+        );
+      case "departamento":
+        return (
+          <>{trip.Departamento}</>
+        );
+      case "latitud":
+        return (
+          <>{trip.Latitud}</>
+        );
+      case "longitud":
+        return (
+          <>{trip.Longitud}</>
+        );
+      case "editar":
+        return (
+          <ModalEditUser/>
+        );
+    }
+  }
 
   return (
-    React.createElement("div", { className: "flex flex-col flex-1 p-8" },
-      React.createElement("div", { className: "flex gap-4 my-4" },
-        React.createElement(Input, {
-          type: "text",
-          placeholder: "Busca una persona",
-          value: personSearched,
-          onValueChange: setPersonSearched,
-          startContent: React.createElement("span", { className: "material-symbols-outlined icon-sm" }, "search")
-        }),
-        React.createElement(ModalPersonActions, null)
-      ),
-      React.createElement(Table, { "aria-label": "Directorio de personas" },
-        React.createElement(TableHeader, { columns: columns },
-          columns.map(column =>
-            React.createElement(TableColumn, { key: column.id, align: "center" }, column.name)
-          )
-        ),
-        React.createElement(TableBody, { items: peopleFiltered, emptyContent: "Ningún resultado coincide" }, (item) => (
-          React.createElement(TableRow, { key: item.id },
-            (columnKey) => React.createElement(TableCell, null, renderCell(columnKey, item))
-          )
-        ))
-      )
-    )
+    <div className="flex flex-col flex-1 p-4 bg-[#F2F2F2] gap-4 overflow-y-auto overflow-x-hidden">
+      <div className="bg-white p-4 rounded-xl">
+        <div className="flex flex-row justify-between mb-4">
+          <div className="flex gap-2 items-center">
+            <h2 className="text-2xl inline-block">Empleados Registrados</h2>
+            <span className="material-symbols-rounded inline-block">badge</span>
+          </div>
+          <ModalPersonActions />
+        </div>
+        <Input
+          type="search"
+          label="Busca a un empleado"
+          endContent={<span className="material-symbols-rounded">search</span>}
+          className="mb-4"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <Table aria-label="adiwmaldw">
+          <TableHeader columns={columns}>
+            {(column) => (
+              <TableColumn key={column.uid} align="center" className="bg-red-100">
+                {column.name}
+              </TableColumn>
+            )}
+          </TableHeader>
+          <TableBody items={filteredTrips}>
+            {(trip) => (
+              <TableRow key={trip.id}>
+                {(columnKey) => <TableCell key={columnKey}>{renderCell(trip, columnKey)}</TableCell>}
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+    </div>
   );
 }
-
