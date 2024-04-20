@@ -25,7 +25,7 @@ const LPLogo = (props) => {
   return (
     <section id="Sponsors" className="overflow-hidden py-12 md:py-16 lg:py-20 bg-white">
       <div className="container mx-auto mb-8 w-full max-w-lg px-[5%] md:mb-10 lg:mb-12">
-        <h1 className={ExoFont.className + " text-center text-2xl font-bold leading-[1.2] md:text-5xl md:leading-[1.2] text-black"}>
+        <h1 className={ExoFont.className + " text-center text-2xl font-bold leading-[1.2] md:text-5xl md:leading-[1.2] text-blue-950"}>
           {heading}
         </h1>
       </div>
@@ -33,7 +33,7 @@ const LPLogo = (props) => {
         {Array(2)
           .fill(0)
           .map((_, index) => (
-            <div key={index} className="flex shrink-0 animate-loop-horizontally items-center gap-7">
+            <div key={index} className="flex shrink-0 loop-scroll items-center gap-7">
               {images.map((logo, index) => (
                 <Image
                   key={index}
