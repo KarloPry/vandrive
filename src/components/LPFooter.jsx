@@ -2,21 +2,16 @@
 
 const Footer7Defaults = {
   image: {
-    src: "https://relume-assets.s3.amazonaws.com/logo-image.svg",
+    src: "svg-van-drive.svg",
     alt: "Logo image",
   },
   columnLinks: [
     {
       links: [
-        { title: "Link One", url: "#" },
-        { title: "Link Two", url: "#" },
-        { title: "Link Three", url: "#" },
-        { title: "Link Four", url: "#" },
-        { title: "Link Five", url: "#" },
       ],
     },
   ],
-  footerText: "© 2024 Relume. All rights reserved.",
+  footerText: "© 2024 315-150. All rights reserved.",
   footerLinks: [
     { title: "Privacy Policy", url: "#" },
     { title: "Terms of Service", url: "#" },
@@ -25,16 +20,15 @@ const Footer7Defaults = {
 };
 
 function LPFooter(props) {
-  const { image, footerText, columnLinks, footerLinks } = {
+  const { footerText, columnLinks, footerLinks } = {
     ...Footer7Defaults,
     ...props,
   };
   return (
-    <footer className="px-[5%] py-12 md:py-18 lg:py-20">
+    <footer className="px-[5%] py-12 md:py-18 lg:py-20 bg-orange-100 text-black">
       <div className="container">
         <div className="flex flex-col items-center pb-12 md:pb-18 lg:pb-20">
           <div className="mb-8">
-            <img src={image.src} alt={image.alt} className="inline-block" />
           </div>
           {columnLinks.map((column, index) => (
             <ul
