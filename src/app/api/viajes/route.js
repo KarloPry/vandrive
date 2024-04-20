@@ -19,8 +19,27 @@ export async function GET() {
 export async function POST(request) {
     try {
 
-        const data = await request.json()
-        console.log(data);
+        // const data = await request.json()
+        // console.log(data);
+
+        // const {  }
+
+        const { unidadId, choferId, puntoInicio, puntoFinal, puntosIntermedios, distancia, empresaId, empleadosId } = await request.json()
+
+        const viaje = await prisma.viaje.create({
+            data: {
+                unidadId,
+                choferId,
+                puntoInicio,
+                puntoFinal,
+                puntosIntermedios,
+                distancia,
+                empresaId,
+                empleadosId
+            }
+        })
+
+        return NextResponse.json({ code: 200, message: "Viaje creado", data: viaje })
         
     } catch (error) {
         console.log(error);

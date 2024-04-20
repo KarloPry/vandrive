@@ -27,6 +27,8 @@ export default function ProfileClient() {
       if (resBody.code === 200) {
         // TODO: user exists, send to dashboard
         // store entreprice id in localstorage
+        localStorage.setItem("empresaId", resBody.empresaId)
+        router.push("/en/app/dashboard")
       }
 
       if (resBody.code === 201) {

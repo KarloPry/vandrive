@@ -22,8 +22,9 @@ model Empresa {
   latitud  Float
   longitud Float
 
-  accounts Account[]
-  viajes   Viaje[]
+  accounts  Account[]
+  viajes    Viaje[]
+  empleados Empleado[]
 }
 
 enum Plan {
@@ -48,16 +49,16 @@ model Viaje {
   fechaInicio       DateTime  @default(now())
   fechaFin          DateTime?
   unidadId          String    @db.ObjectId
-  choferid          String    @db.ObjectId
+  choferId          String    @db.ObjectId
   puntoInicio       Punto
-  PuntoFinal        Punto
+  puntoFinal        Punto
   puntosIntermedios Punto[]
-  distancia         Float?
+  distancia         Float?    @default(0)
   empresaId         String    @db.ObjectId
   empleadosId       String[]  @db.ObjectId
 
   unidad    Unidad     @relation(fields: [unidadId], references: [id])
-  chofer    Chofer     @relation(fields: [choferid], references: [id])
+  chofer    Chofer     @relation(fields: [choferId], references: [id])
   empresa   Empresa    @relation(fields: [empresaId], references: [id])
   Empleados Empleado[] @relation(fields: [empleadosId], references: [id])
 }
@@ -82,13 +83,15 @@ enum TipoUnidad {
 }
 
 model Empleado {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
-  longitud Float
-  latitud  Float
-  viajesId String[] @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  longitud  Float
+  latitud   Float
+  viajesId  String[] @db.ObjectId
+  empresaId String   @db.ObjectId
 
-  Viajes Viaje[] @relation(fields: [viajesId], references: [id])
+  Viajes  Viaje[] @relation(fields: [viajesId], references: [id])
+  Empresa Empresa @relation(fields: [empresaId], references: [id])
 }
 
 model Chofer {
