@@ -1,45 +1,43 @@
 "use client";
 
+import Image from "next/image";
 import { Star } from "@relume_io/relume-ui";
 
 const Testimonial17Defaults = {
-  heading: "Customer testimonials",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  heading: "Testimonios de clientes",
+  description: "En VanDrive, nos enorgullece brindar un servicio excepcional que no solo cumple, sino que supera las expectativas de nuestros clientes.",
   testimonials: [
     {
       testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+        "Como responsable de coordinar el traslado de nuestro personal a eventos y reuniones importantes, siempre busco eficiencia y confiabilidad. VanDrive no solo cumplió con estas expectativas, sino que las superó. Su profesionalismo y puntualidad hicieron que nuestros viajes fueran sin estrés y nos permitieron centrarnos en lo que realmente importa: nuestro trabajo.",
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 1",
+        src: "/phprof1.jpeg",
+        alt: "Avatar testimonio 1",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
+      name: "Ana M.",
+      position: "Gerente de Recursos Humanos",
       numberOfStars: 5,
     },
     {
       testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+        "¡Increíble servicio de traslado! Me sentí como un VIP en cada viaje. Los conductores fueron amables, los vehículos estaban impecables y la puntualidad fue impecable.",
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 2",
+        src: "/phprof2.jpeg",
+        alt: "Avatar testimonio 2",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
+      name: "Juan C.",
+      position: "Empleado Satisfecho",
       numberOfStars: 5,
     },
     {
       testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+        "La logística de trasladar a nuestro equipo entre sedes siempre fue un desafío, hasta que encontramos a VanDrive. Su equipo hizo que todo fuera fácil y sin complicaciones. ¡Gracias por su excelente servicio!",
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 3",
+        src: "/phprof3.jpeg",
+        alt: "Avatar testimonio 3",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
+      name: "Mario G.",
+      position: "Director Ejecutivo",
       numberOfStars: 5,
     },
   ],
@@ -51,9 +49,9 @@ function LPTestimonial (props) {
     ...props,
   };
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="Testimonials" className="px-[5%] py-16 md:py-24 lg:py-28 bg-white">
       <div className="container">
-        <div className="mx-auto mb-12 w-full max-w-lg text-center md:mb-18 lg:mb-20">
+        <div className="mx-auto mb-12 w-full max-w-lg text-center md:mb-18 lg:mb-20 text-blue-950">
           <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">{heading}</h1>
           <p className="md:text-md">{description}</p>
         </div>
@@ -61,14 +59,14 @@ function LPTestimonial (props) {
           {testimonials.map((testimonial, index) => (
             <div
               key={`${testimonial.testimonial}-${index}`}
-              className="flex w-full flex-col items-start justify-between border border-border-primary p-6 md:p-8"
+              className="flex w-full flex-col items-start justify-between border border-border-primary p-6 md:p-8 text-blue-950"
             >
               <div className="mb-5 md:mb-6">
                 <div className="mb-6 flex">
                   {Array(testimonial.numberOfStars)
                     .fill(null)
                     .map((_, starIndex) => (
-                      <Star key={starIndex} className="mr-1 size-6" />
+                      <Star key={starIndex} className="mr-1 size-6 text-orange-300" />
                     ))}
                 </div>
                 <blockquote className={`before:content-['"'] after:content-['"'] md:text-md`}>
@@ -76,15 +74,22 @@ function LPTestimonial (props) {
                 </blockquote>
               </div>
               <div className="flex w-full flex-col items-start text-left md:w-fit md:flex-row md:items-center">
-                <img
+                {/* <img
                   src={testimonial.avatar.src}
                   alt={testimonial.avatar.alt}
+                  className="mb-4 mr-0 size-12 min-h-12 min-w-12 rounded-full object-cover md:mb-0 md:mr-4"
+                /> */}
+                <Image
+                  src={testimonial.avatar.src}
+                  alt={testimonial.avatar.alt}
+                  width={48}
+                  height={48}
                   className="mb-4 mr-0 size-12 min-h-12 min-w-12 rounded-full object-cover md:mb-0 md:mr-4"
                 />
                 <div>
                   <p className="font-semibold">{testimonial.name}</p>
                   <p>
-                    {testimonial.position}, {testimonial.companyName}
+                    {testimonial.position} {testimonial.companyName}
                   </p>
                 </div>
               </div>

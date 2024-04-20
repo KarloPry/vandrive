@@ -1,18 +1,15 @@
 "use client";
 
+import Image from "next/image";
+
 const Footer7Defaults = {
   image: {
-    src: "https://relume-assets.s3.amazonaws.com/logo-image.svg",
+    src: "svg-van-drive.svg",
     alt: "Logo image",
   },
   columnLinks: [
     {
       links: [
-        { title: "Link One", url: "#" },
-        { title: "Link Two", url: "#" },
-        { title: "Link Three", url: "#" },
-        { title: "Link Four", url: "#" },
-        { title: "Link Five", url: "#" },
       ],
     },
   ],
@@ -34,7 +31,12 @@ function LPFooter(props) {
       <div className="container">
         <div className="flex flex-col items-center pb-12 md:pb-18 lg:pb-20">
           <div className="mb-8">
-            <img src={image.src} alt={image.alt} className="inline-block" />
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={300}
+              height={40}
+            />
           </div>
           {columnLinks.map((column, index) => (
             <ul

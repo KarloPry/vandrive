@@ -4,48 +4,48 @@ import { BiEnvelope, BiMessageDetail, BiPhone } from "react-icons/bi";
 import { Location } from "@relume_io/relume-ui";
 
 const Contact24Defaults = {
-  tagline: "Tagline",
-  heading: "Contact us",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  tagline: "",
+  heading: "Contactanos",
+  description: "En VanDrive, valoramos la comunicación directa y estamos listos para responder cualquier pregunta que tengas sobre nuestros servicios de traslado de personal.",
   contacts: [
     {
       icon: <BiEnvelope className="size-12" />,
       title: "Email",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.",
+        "Envíanos un correo y te responderemos lo más pronto posible",
       link: {
-        label: "hello@relume.io",
+        label: "jcostas29@alumnos.uaq.mx",
         url: "#",
       },
     },
     {
       icon: <BiMessageDetail className="size-12" />,
-      title: "Live chat",
+      title: "Chat en vivo",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.",
+        "Chatea con nosotros en tiempo real.",
       link: {
-        label: "Start new chat",
+        label: "Iniciar chat",
         url: "#",
       },
     },
     {
       icon: <BiPhone className="size-12" />,
-      title: "Phone",
+      title: "Teléfono",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.",
+        "Llama ahora para asistencia inmediata.",
       link: {
-        label: "+1 (555) 000-0000",
+        label: "+52 1 442 133 3617",
         url: "#",
       },
     },
     {
       icon: <Location className="size-12" />,
-      title: "Office",
+      title: "Oficinas",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.",
+        "Encuéntranos en nuestra oficina principal.",
       link: {
-        label: "123 Sample St, Sydney NSW 2000 AU",
-        url: "#",
+        label: "Av. de las Ciencias S/N, 76230 Juriquilla, Qro.",
+        url: "https://maps.app.goo.gl/AoQsrPCjgG8Vy3dy7",
       },
     },
   ],
@@ -57,7 +57,7 @@ function LPContactUS(props) {
     ...props,
   };
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="Contact" className="px-[5%] py-16 md:py-24 lg:py-28 bg-white text-blue-950">
       <div className="container">
         <div className="mb-12 max-w-lg md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
